@@ -4,3 +4,6 @@
 [submodule "roles/ltsp-pnp"]
 	path = roles/ltsp-pnp
 	url = git@github.com:UTD-CSG/ltsp-pnp.git
+[submodule "roles/preseed-overlay"]
+	path = roles/preseed-overlay
+	url = git@github.com:SimpleGateway/preseed-overlay.git
