@@ -21,20 +21,6 @@ boot_next: 192.168.10.127
 ntp:
 - pool.ntp.org
 
-staticHosts:
-  terminalServer:
-    mac: 00:21:9b:74:79:5f
-    addr: 192.168.10.127
-    name: csg-termserv
-  ctf-temp-host:
-    mac: c8:9c:dc:6d:20:ba
-    addr: 192.168.10.126
-    name: csg-ctf-host
-  ctf-temp-vm:
-    mac: 08:00:27:fb:d1:c3
-    addr: 192.168.10.125
-    name: csg-ctf-vm
-
 stub-zones:
   UTD:
     name: utdallas.edu
