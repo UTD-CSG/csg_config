@@ -1,2 +1,10 @@
 [gateway]
-csg-lab-isr
+csg-lab-isr.csg.utdallas.edu
+
+[workstation]
+csg01.csg.utdallas.edu
+csg02.csg.utdallas.edu
+csg03.csg.utdallas.edu
+csg04.csg.utdallas.edu
+csg05.csg.utdallas.edu
+csg06.csg.utdallas.edu

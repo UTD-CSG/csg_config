@@ -1,0 +1,8 @@
+---
+- hosts: workstation
+  become: yes
+  roles:
+    - xbps-repoconf
+    - sshd
+    - greeter-theme
+    - csg-session

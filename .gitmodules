@@ -7,3 +7,33 @@
 [submodule "roles/preseed-overlay"]
 	path = roles/preseed-overlay
 	url = git@github.com:SimpleGateway/preseed-overlay.git
+[submodule "roles/sshd"]
+	path = roles/sshd
+	url = git@github.com:void-ansible-roles/sshd.git
+[submodule "roles/network"]
+	path = roles/network
+	url = git@github.com:void-ansible-roles/network.git
+[submodule "roles/xorg"]
+	path = roles/xorg
+	url = git@github.com:void-ansible-roles/xorg.git
+[submodule "roles/xbps-repoconf"]
+	path = roles/xbps-repoconf
+	url = git@github.com:void-ansible-roles/xbps-repoconf.git
+[submodule "roles/cinnamon"]
+	path = roles/cinnamon
+	url = git@github.com:void-ansible-roles/cinnamon.git
+[submodule "roles/dbus"]
+	path = roles/dbus
+	url = git@github.com:void-ansible-roles/dbus.git
+[submodule "roles/lightdm"]
+	path = roles/lightdm
+	url = git@github.com:void-ansible-roles/lightdm.git
+[submodule "roles/lightdm-webkit-greeter"]
+	path = roles/lightdm-webkit-greeter
+	url = git@github.com:void-ansible-roles/lightdm-webkit-greeter.git
+[submodule "roles/csg-greeter-theme/files/csg_greeter_theme"]
+	path = roles/csg-greeter-theme/files/csg_greeter_theme
+	url = git@github.com:utdcsg/csg_greeter_theme.git
+[submodule "roles/greeter-theme/files/csg_greeter_theme"]
+	path = roles/greeter-theme/files/csg_greeter_theme
+	url = git@github.com:utdcsg/csg_greeter_theme.git

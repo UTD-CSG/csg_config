@@ -1,0 +1,62 @@
+---
+- name: Install Software
+  xbps: pkg={{ item }} state=present
+  with_items:
+    - base-devel
+    - bash-completion
+    - binutils
+    - chromium
+    - curl
+    - emacs
+    - evince
+    - exiftool
+    - feh
+    - file
+    - firefox
+    - git-all
+    - libreoffice
+    - openbsd-netcat
+    - python-pip
+    - vim
+    - virtualbox-ose
+    - vlc
+    - webcat
+    - wget
+    - wireshark
+    - xtools
+    - xxd
+
+- name: Install terminals
+  xbps: pkg={{ item }} state=present
+  with_items:
+    - gnome-terminal
+    - rxvt-unicode
+    - urxvt-perls
+    - xterm
+
+- name: Install compression handlers
+  xbps: pkg={{ item }} state=present
+  with_items:
+    - bzip2
+    - dtrx
+    - p7zip
+    - unrar
+    - unzip
+    - xz
+    - zip
+
+- name: Install useful system packages
+  xbps: pkg={{ item }} state=present
+  with_items:
+    - adwaita-icon-theme
+    - awoken-icons
+    - gnome-icon-theme
+    - gnome-icon-theme-extras
+    - hicolor-icon-theme
+    - pulseaudio
+
+- name: Make csg member of useful groups
+  user: name=csg group={{ item }} append=yes
+  with_items:
+    - vboxusers
+    - wireshark

@@ -1,0 +1,55 @@
+---
+gw_network: 192.168.10.0
+
+dhcp_self: 192.168.10.1
+dhcp_lower: 192.168.10.2
+dhcp_upper: 192.168.10.128
+
+domain: csg.utdallas.edu
+hostname: csg-lab-isr
+
+dns_SOA: 2016041301
+
+int_if: em1
+ext_if: em0
+ext_ip: 10.176.169.16
+ext_dns:
+
+boot_fname: pxelinux.0
+boot_next: 192.168.10.1
+
+ntp:
+- pool.ntp.org
+
+staticHosts:
+  csg01:
+    mac: 00:13:72:db:73:79
+    addr: 192.168.10.20
+    name: csg01
+  csg02:
+    mac: 00:18:8b:5a:92:28
+    addr: 192.168.10.21
+    name: csg02
+  csg03:
+    mac: 00:18:8b:5a:68:63
+    addr: 192.168.10.22
+    name: csg03
+  csg04:
+    mac: 00:18:8b:5a:68:3a
+    addr: 192.168.10.23
+    name: csg04
+  csg05:
+    mac: 00:21:9b:74:60:46
+    addr: 192.168.10.24
+    name: csg05
+  csg06:
+    mac: 00:21:9b:74:70:18
+    addr: 192.168.10.25
+    name: csg06
+
+stub-zones:
+  UTD:
+    name: utdallas.edu
+    addresses:
+      primary: 10.180.15.160
+      secondary: 10.182.70.107
