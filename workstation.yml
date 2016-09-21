@@ -4,5 +4,6 @@
   roles:
     - xbps-repoconf
     - sshd
+    - ntp
     - greeter-theme
     - csg-session

@@ -2,4 +2,6 @@
 network_input_policy: ACCEPT
 network_output_policy: ACCEPT
 
+ntp_server: 192.168.10.1
+
 LWG_theme_name: csg
