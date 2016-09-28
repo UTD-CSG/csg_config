@@ -11,7 +11,7 @@ fi
 
 echo "Collecting host keys"
 echo "# START CSG SECTION" > /tmp/csg_hostkeys
-for host in $(grep csg.utdallas.edu "${inventory}") ; do
+for host in $(grep csg "${inventory}") ; do
     ssh-keyscan -t ed25519 "${host}" 2>/dev/null >> /tmp/csg_hostkeys
 done
 echo "# END CSG SECTION" >> /tmp/csg_hostkeys
