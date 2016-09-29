@@ -1,6 +1,6 @@
 [submodule "roles/gateway"]
 	path = roles/gateway
-	url = git@github.com:UTD-CSG/obsd-gw.git
+	url = git@github.com:SimpleGateway/gateway-base.git
 [submodule "roles/ltsp-pnp"]
 	path = roles/ltsp-pnp
 	url = git@github.com:UTD-CSG/ltsp-pnp.git

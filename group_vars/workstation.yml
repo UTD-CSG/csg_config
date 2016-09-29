@@ -5,3 +5,5 @@ network_output_policy: ACCEPT
 ntp_server: 192.168.10.1
 
 LWG_theme_name: csg
+
+firefox_homepage: https://csg.utdallas.edu/
