@@ -1,6 +1,7 @@
 ---
 - name: Install Software
-  xbps: pkg="{{ software | join(' ') }}" state=present
+  xbps: pkg="{{ item }}" state=present
+  with_items: "{{ software }}"
 
 - name: Make csg member of useful groups
   user: name=csg group={{ item }} append=yes
