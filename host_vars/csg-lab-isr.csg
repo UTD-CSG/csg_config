@@ -51,7 +51,7 @@ staticHosts:
     addr: 192.168.10.26
     name: csg07
   csg08:
-    mac: 00:21:9b:74:7b:f6
+    mac: 00:21:9b:74:74:ff
     addr: 192.168.10.27
     name: csg08
   csg09:
