@@ -58,6 +58,14 @@ staticHosts:
     mac: 00:21:9b:74:87:33
     addr: 192.168.10.28
     name: csg09
+  poodle:
+    mac: 00:21:9b:74:79:5f
+    addr: 192.168.10.5
+    name: poodle
+  drown:
+    mac: 00:21:9b:71:ea:61
+    addr: 192.168.10.6
+    name: drown
 
 stubZones:
   UTD:
