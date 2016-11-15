@@ -5,3 +5,4 @@
     - xbps-repoconf
     - sshd
     - ntp
+    - key-access
