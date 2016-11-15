@@ -1,5 +1,5 @@
 ---
-- hosts: workstation
+- hosts: workstation:server
   become: yes
   tasks:
     - xbps: update_cache=yes upgrade=yes
