@@ -1,12 +1,12 @@
-[submodule "roles/gateway"]
-	path = roles/gateway
-	url = https://github.com/SimpleGateway/gateway-base.git
+[submodule "roles/sg-base"]
+	path = roles/sg-base
+	url = https://github.com/SimpleGateway/sg-base.git
 [submodule "roles/ltsp-pnp"]
 	path = roles/ltsp-pnp
 	url = https://github.com/UTD-CSG/ltsp-pnp.git
-[submodule "roles/preseed-overlay"]
-	path = roles/preseed-overlay
-	url = https://github.com/SimpleGateway/preseed-overlay.git
+[submodule "roles/sg-pxeboot"]
+	path = roles/sg-pxeboot
+	url = https://github.com/SimpleGateway/sg-pxeboot.git
 [submodule "roles/sshd"]
 	path = roles/sshd
 	url = https://github.com/void-ansible-roles/sshd.git
@@ -44,5 +44,17 @@
 	path = library/ansible_xbps
 	url = https://github.com/void-ansible-roles/ansible_xbps.git
 [submodule "roles/wol-overlay"]
-	path = roles/wol-overlay
-	url = https://github.com/SimpleGateway/wol-overlay
+	path = roles/sg-wol
+	url = https://github.com/SimpleGateway/sg-wol.git
+[submodule "roles/sg-dhcp"]
+	path = roles/sg-dhcp
+	url = https://github.com/SimpleGateway/sg-dhcp.git
+[submodule "roles/sg-ntp"]
+	path = roles/sg-ntp
+	url = https://github.com/SimpleGateway/sg-ntp.git
+[submodule "roles/sg-dns"]
+	path = roles/sg-dns
+	url = https://github.com/SimpleGateway/sg-dns.git
+[submodule "filter_plugins/sg-filters"]
+	path = filter_plugins/sg-filters
+	url = git@github.com:SimpleGateway/sg-filters.git

@@ -1,79 +1,96 @@
 ---
-gw_network: 192.168.10.0
+sg_globalconf:
+  hostname: csg-lab-isr
+  domain: csg
+  domain_address: 129.110.92.18
+  pf:
+    block_policy: drop
+  dns:
+    SOA: 2016111900
+    stubzones:
+      - name: utdallas.edu
+        private: true
+        cidr: 10.0.0.0/8
+        arpa: 10.in-addr.arpa.
+        addresses:
+          - 10.182.70.107
+          - 10.182.70.24
+          - 10.180.15.160
+          - 10.180.14.69
+  ntp:
+    clocks:
+      - pool.ntp.org
 
-dhcp_self: 192.168.10.1
-dhcp_lower: 192.168.10.2
-dhcp_upper: 192.168.10.128
-
-domain: csg
-domain_address: 129.110.92.18
-hostname: csg-lab-isr
-
-dns_SOA: 2016092800
-
-int_if: em1
-ext_if: em0
-ext_ip: 10.176.169.16
-
-boot_fname: pxelinux.0
-boot_next: 192.168.10.1
-
-ntp:
-- pool.ntp.org
-
-staticHosts:
-  csg01:
-    mac: 00:18:8b:5a:64:52
-    addr: 192.168.10.20
-    name: csg01
-  csg02:
-    mac: 00:13:72:db:73:79
-    addr: 192.168.10.21
-    name: csg02
-  csg03:
-    mac: 00:18:8b:5a:92:28
-    addr: 192.168.10.22
-    name: csg03
-  csg04:
-    mac: 00:18:8b:5a:68:63
-    addr: 192.168.10.23
-    name: csg04
-  csg05:
-    mac: 00:18:8b:5a:68:3a
-    addr: 192.168.10.24
-    name: csg05
-  csg06:
-    mac: 00:21:9b:74:60:46
-    addr: 192.168.10.25
-    name: csg06
-  csg07:
-    mac: 00:21:9b:74:70:18
-    addr: 192.168.10.26
-    name: csg07
-  csg08:
-    mac: 00:21:9b:74:74:ff
-    addr: 192.168.10.27
-    name: csg08
-  csg09:
-    mac: 00:21:9b:74:87:33
-    addr: 192.168.10.28
-    name: csg09
-  poodle:
-    mac: 00:21:9b:74:79:5f
-    addr: 192.168.10.5
-    name: poodle
-  drown:
-    mac: 00:21:9b:71:ea:61
-    addr: 192.168.10.6
-    name: drown
-
-stubZones:
-  UTD:
-    name: utdallas.edu
-    private: true
-    localZone: 10.in-addr.arpa
-    addresses:
-      - 10.182.70.107
-      - 10.182.70.24
-      - 10.180.15.160
-      - 10.180.14.69
+sg_network:
+  - name: em0
+    desc: External UTD Network
+    address: 10.176.169.16
+    cidr: 10.176.169.0/24
+    services:
+      - ssh
+  - name: bge0
+    desc: Super volatile test network
+    address: 172.16.42.1
+    cidr: 172.16.42.0/24
+    arpa: 42.16.172.in-addr.arpa
+    domain: csg-volatile
+    services:
+      - ssh
+      - dhcp
+      - dns
+    serviceconf:
+      dhcp:
+        pool: 172.16.42.0/25
+    hosts:
+      - name: maldridge
+        mac: 54:ab:3a:4c:8c:7e
+        addr: 172.16.42.25
+  - name: em1
+    desc: Internal CSG Network
+    address: 192.168.10.1
+    cidr: 192.168.10.0/24
+    arpa: 10.168.192.in-addr.arpa.
+    services:
+      - ssh
+      - nat
+      - dhcp
+      - dns
+      - ntp
+    serviceconf:
+      dhcp:
+        pool: 192.168.10.0/25
+        pxeboot_fname: pxelinux.0
+    hosts:
+      - name: poodle
+        mac: 00:21:9b:74:79:5f
+        addr: 192.168.10.5
+      - name: drown
+        mac: 00:21:9b:71:ea:61
+        addr: 192.168.10.6
+      - name: csg01
+        mac: 00:18:8b:5a:64:52
+        addr: 192.168.10.20
+      - name: csg02
+        mac: 00:13:72:db:73:79
+        addr: 192.168.10.21
+      - name: csg03
+        mac: 00:18:8b:5a:92:28
+        addr: 192.168.10.22
+      - name: csg04
+        mac: 00:18:8b:5a:68:63
+        addr: 192.168.10.23
+      - name: csg05
+        mac: 00:18:8b:5a:68:3a
+        addr: 192.168.10.24
+      - name: csg06
+        mac: 00:21:9b:74:60:46
+        addr: 192.168.10.25
+      - name: csg07
+        mac: 00:21:9b:74:70:18
+        addr: 192.168.10.26
+      - name: csg08
+        mac: 00:21:9b:74:74:ff
+        addr: 192.168.10.27
+      - name: csg09
+        mac: 00:21:9b:74:87:33
+        addr: 192.168.10.28
