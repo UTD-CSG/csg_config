@@ -6,12 +6,12 @@ sg_globalconf:
   pf:
     block_policy: drop
   dns:
-    SOA: 2016111900
+    SOA: 2016120100
     stubzones:
       - name: utdallas.edu
         private: true
         cidr: 10.0.0.0/8
-        arpa: 10.in-addr.arpa.
+        arpa: 10.in-addr.arpa
         addresses:
           - 10.182.70.107
           - 10.182.70.24
@@ -32,7 +32,7 @@ sg_network:
     desc: Super volatile test network
     address: 172.16.42.1
     cidr: 172.16.42.0/24
-    arpa: 42.16.172.in-addr.arpa
+    arpa: 16.172.in-addr.arpa
     domain: csg-volatile
     services:
       - ssh
@@ -49,7 +49,7 @@ sg_network:
     desc: Internal CSG Network
     address: 192.168.10.1
     cidr: 192.168.10.0/24
-    arpa: 10.168.192.in-addr.arpa.
+    arpa: 10.168.192.in-addr.arpa
     services:
       - ssh
       - nat
