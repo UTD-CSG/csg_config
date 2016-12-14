@@ -61,6 +61,12 @@ sg_network:
         pool: 192.168.10.0/25
         pxeboot_fname: pxelinux.0
     hosts:
+      - name: projector
+        mac: 00:25:5c:6c:c6:da
+        addr: 192.168.10.3
+      - name: printer
+        mac: 00:1b:a9:70:e5:42
+        addr: 192.168.10.4
       - name: poodle
         mac: 00:21:9b:74:79:5f
         addr: 192.168.10.5
