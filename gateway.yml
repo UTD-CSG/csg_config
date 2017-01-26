@@ -7,4 +7,5 @@
     - sg-dhcp
     - sg-dns
     - sg-ntp
+    - sg-wol
     - void-deployment

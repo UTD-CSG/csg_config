@@ -1,9 +1,6 @@
 [submodule "roles/sg-base"]
 	path = roles/sg-base
 	url = https://github.com/SimpleGateway/sg-base.git
-[submodule "roles/ltsp-pnp"]
-	path = roles/ltsp-pnp
-	url = https://github.com/UTD-CSG/ltsp-pnp.git
 [submodule "roles/sg-pxeboot"]
 	path = roles/sg-pxeboot
 	url = https://github.com/SimpleGateway/sg-pxeboot.git
@@ -55,6 +52,3 @@
 [submodule "roles/sg-dns"]
 	path = roles/sg-dns
 	url = https://github.com/SimpleGateway/sg-dns.git
-[submodule "filter_plugins/sg-filters"]
-	path = filter_plugins/sg-filters
-	url = https://github.com/SimpleGateway/sg-filters.git
