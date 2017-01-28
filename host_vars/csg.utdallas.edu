@@ -1,0 +1,15 @@
+---
+ntp_server: pool.ntp.org
+
+network_output_policy: ACCEPT
+
+certbot_contact_email: utdcsg@gmail.com
+certbot_webroot: /var/www/primary/
+certbot_domain: csg.utdallas.edu
+
+jekyll_site_url: csg.utdallas.edu
+jekyll_site_path: /var/www/primary
+jekyll_site_name: utdcsg
+jekyll_source_url: https://github.com/utdcsg/csg-website.git
+jekyll_use_ssl: true
+jekyll_use_letsencrypt: true

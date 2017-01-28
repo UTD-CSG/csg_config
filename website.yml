@@ -1,0 +1,11 @@
+---
+- hosts: website
+  become: yes
+  roles:
+    - network
+    - xbps-repoconf
+    - sshd
+    - ntp
+    - nginx
+    - jekyll
+    - certbot
