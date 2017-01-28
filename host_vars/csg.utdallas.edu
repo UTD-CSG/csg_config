@@ -1,8 +1,6 @@
 ---
 ntp_server: pool.ntp.org
 
-network_output_policy: ACCEPT
-
 certbot_contact_email: utdcsg@gmail.com
 certbot_webroot: /var/www/primary/
 certbot_domain: csg.utdallas.edu
