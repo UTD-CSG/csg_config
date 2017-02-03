@@ -1,0 +1,63 @@
+---
+- name: Add Printing Packages
+  xbps:
+    pkg:
+      - cups
+      - cups-filters
+    state: present
+
+- name: Check if cupsd is enabled
+  stat:
+    path: /var/service/cupsd
+  register: cupsdsv
+
+- name: Stop cupsd
+  command: sv d cupsd
+  when: cupsdsv.stat.exists
+
+- name: Wait for cupsd to stop
+  wait_for:
+    port: 631
+    state: stopped
+  when: cupsdsv.stat.exists
+
+- name: Copy CUPS configuration data
+  copy:
+    src: cups
+    dest: /etc
+    owner: root
+    group: lp
+    mode: 0644
+    directory_mode: 0755
+  notify:
+    - cups
+
+- name: Copy cupsd.conf
+  template:
+    src: cupsd.conf
+    dest: /etc/cups/cupsd.conf
+    owner: root
+    group: lp
+    mode: 0640
+  notify:
+    - cups
+
+- name: Copy CUPS Firewall rules
+  copy:
+    src: cups.rules
+    dest: /etc/iptables.d
+    owner: root
+    group: root
+    mode: 0640
+  notify:
+    - iptables
+
+- name: Enable CUPS service
+  file:
+    src: /etc/sv/cupsd
+    dest: /var/service/cupsd
+    state: link
+
+- name: Start cupsd
+  command: sv u cupsd
+  when: cupsdsv.stat.exists

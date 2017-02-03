@@ -1,0 +1,10 @@
+---
+- hosts: utility
+  become: yes
+  become_method: sudo
+  roles:
+    - xbps-repoconf
+    - ntp
+    - sshd
+    - key-access
+    - cups

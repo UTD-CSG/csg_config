@@ -12,6 +12,9 @@ csg07.csg
 csg08.csg
 csg09.csg
 
+[utility]
+drown.csg
+
 [server]
 drown.csg
 poodle.csg
