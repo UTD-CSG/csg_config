@@ -1,6 +1,9 @@
 [gateway]
 csg-lab-isr.csg
 
+[dmz]
+csg-dmz-01.utdallas.edu
+
 [workstation]
 csg01.csg
 csg02.csg

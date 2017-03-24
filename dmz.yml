@@ -1,16 +1,13 @@
 ---
-- hosts: gateway
+- hosts: dmz
   gather_facts: no
   serial: 1
   roles:
     - sg-ansible-setup
 
-- hosts: gateway
+- hosts: dmz
   become: yes
   become_method: doas
   roles:
     - sg-base
     - sg-dns
-    - sg-ntp
-    - sg-wol
-    - void-deployment
