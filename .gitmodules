@@ -61,3 +61,6 @@
 [submodule "roles/jekyll"]
 	path = roles/jekyll
 	url = https://github.com/void-ansible-roles/jekyll.git
+[submodule "roles/sg-ansible-setup"]
+	path = roles/sg-ansible-setup
+	url = https://github.com/SimpleGateway/sg-ansible-setup.git

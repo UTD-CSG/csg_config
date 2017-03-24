@@ -1,8 +1,18 @@
 ---
+sg_pkg_path: https://mirror.esc7.net/%m/
+sg_pkg_server: mirror.esc7.net
+
 sg_globalconf:
-  hostname: csg-lab-isr
-  domain: csg
-  domain_address: 129.110.92.18
+  hostname: csg-lab-isr.csg
+  default_gateway: 10.176.169.1
+  bootresolvers:
+    - 10.182.70.107
+    - 10.182.70.24
+    - 10.180.15.160
+    - 10.180.14.69
+  ssh:
+    permit_password: false
+    listen_egress: true
   pf:
     block_policy: drop
   dns:
@@ -21,45 +31,39 @@ sg_globalconf:
     clocks:
       - pool.ntp.org
 
-sg_network:
-  - name: em0
-    desc: External UTD Network
-    address: 10.176.169.16
-    cidr: 10.176.169.0/24
-    services:
-      - ssh
-  - name: bge0
-    desc: Super volatile test network
-    address: 172.16.42.1
-    cidr: 172.16.42.0/24
-    arpa: 16.172.in-addr.arpa
-    domain: csg-volatile
-    services:
-      - ssh
-      - dhcp
-      - dns
-    serviceconf:
-      dhcp:
-        pool: 172.16.42.0/25
-    hosts:
-      - name: maldridge
-        mac: 54:ab:3a:4c:8c:7e
-        addr: 172.16.42.25
-  - name: em1
-    desc: Internal CSG Network
-    address: 192.168.10.1
+sg_networks:
+  - name: lab
+    desc: Trusted network for lab machines
+    domain: csg
     cidr: 192.168.10.0/24
-    arpa: 10.168.192.in-addr.arpa
+    arpa: 168.192.in-addr.arpa
+    attach_to: em1
     services:
       - ssh
+      - jumphost
       - nat
       - dhcp
       - dns
       - ntp
+      - pxeboot
     serviceconf:
       dhcp:
-        pool: 192.168.10.0/25
+        pools:
+          - 192.168.10.128/25
+        routers: 192.168.10.1
+        dns: 192.168.10.1
+        ntp: 192.168.10.1
         pxeboot_fname: pxelinux.0
+        pxeboot_next: 192.168.10.1
+        allow_unknown: true
+      dns:
+        authname: csg-lab-isr.csg
+        adminmail: csg.utdallas.edu
+      nat:
+        nat_to: em0
+        mode: dhcp
+        autonat:
+          - 192.168.10.32/28
     hosts:
       - name: projector
         mac: 00:25:5c:6c:c6:da
@@ -75,28 +79,36 @@ sg_network:
         addr: 192.168.10.6
       - name: csg01
         mac: 00:18:8b:5a:64:52
-        addr: 192.168.10.20
+        addr: 192.168.10.33
       - name: csg02
         mac: 00:13:72:db:73:79
-        addr: 192.168.10.21
+        addr: 192.168.10.34
       - name: csg03
         mac: 00:18:8b:5a:92:28
-        addr: 192.168.10.22
+        addr: 192.168.10.35
       - name: csg04
         mac: 00:18:8b:5a:68:63
-        addr: 192.168.10.23
+        addr: 192.168.10.36
       - name: csg05
         mac: 00:18:8b:5a:68:3a
-        addr: 192.168.10.24
+        addr: 192.168.10.37
       - name: csg06
         mac: 00:21:9b:74:60:46
-        addr: 192.168.10.25
+        addr: 192.168.10.38
       - name: csg07
         mac: 00:21:9b:74:70:18
-        addr: 192.168.10.26
+        addr: 192.168.10.39
       - name: csg08
         mac: 00:21:9b:74:74:ff
-        addr: 192.168.10.27
+        addr: 192.168.10.40
       - name: csg09
         mac: 00:21:9b:74:87:33
-        addr: 192.168.10.28
+        addr: 192.168.10.41
+
+sg_interfaces:
+  - name: em0
+    desc: External UTD Network
+    address: 10.176.169.16/24
+  - name: em1
+    desc: Internal CSG Network
+    address: 192.168.10.1/24
