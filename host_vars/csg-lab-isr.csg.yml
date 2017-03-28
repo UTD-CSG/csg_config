@@ -65,6 +65,12 @@ sg_networks:
         autonat:
           - 192.168.10.32/28
     hosts:
+      - name: csg-lab-isr
+        mac: 00:04:23:ab:4e:e5
+        addr: 192.168.10.1
+        dns:
+          CNAME:
+            - preseed
       - name: projector
         mac: 00:25:5c:6c:c6:da
         addr: 192.168.10.3

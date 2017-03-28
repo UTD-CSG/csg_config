@@ -14,7 +14,7 @@ xbps-install -R https://lug.utdallas.edu/mirror/void/current -Syu
 xbps-install -R https://lug.utdallas.edu/mirror/void/current -y curl git-all python python-devel python-pip libressl-devel base-devel
 
 # Install ipaddr filter for python
-pip install ansible netaddr
+pip install ansible netaddr jmespath
 
 # Attempt to run the main ansible installer
 ansible-pull --accept-host-key -U https://github.com/utdcsg/csg_config.git workstation.yml
