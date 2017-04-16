@@ -6,4 +6,4 @@
     - sshd
     - ntp
     - jekyll
-    - certbot
+    - acmetool
