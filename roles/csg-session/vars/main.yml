@@ -1,5 +1,6 @@
 ---
 software:
+  - acl-progs
   - adwaita-icon-theme
   - awoken-icons
   - base-devel
