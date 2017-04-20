@@ -1,0 +1,2 @@
+#!/bin/sh
+ansible workstation -b --become-user=lightdm -a "xset -display :0.0 dpms force off" -K
