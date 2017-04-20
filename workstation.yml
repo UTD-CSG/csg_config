@@ -3,10 +3,10 @@
   become: yes
   roles:
     - xbps-repoconf
+    - key-access
     - sshd
     - ntp
     - greeter-theme
     - csg-session
     - firefox
-    - key-access
     - cups-client
