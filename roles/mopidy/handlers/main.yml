@@ -1,0 +1,5 @@
+---
+- name: mopidy
+  runit:
+    name: mopidy
+    state: restarted

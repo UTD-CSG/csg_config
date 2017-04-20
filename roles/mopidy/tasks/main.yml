@@ -1,0 +1,84 @@
+---
+- name: Install mopidy
+  xbps:
+    pkg: mopidy
+    state: present
+  notify:
+    - mopidy
+
+- name: Install Mopidy add-ons
+  pip:
+    name: "{{ mopidy_addons }}"
+    state: present
+  notify:
+    - mopidy
+
+- name: Add mopidy user to audio group
+  user:
+    name: mopidy
+    groups: audio
+    append: yes
+
+- name: Configure Mopidy
+  template:
+    src: mopidy.conf.j2
+    dest: /etc/mopidy/mopidy.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - mopidy
+
+- name: Create Mopidy media directory
+  file:
+    dest: "{{ mopidy_media_directory }}"
+    owner: mopidy
+    group: mopidy
+    mode: 0755
+    state: directory
+  notify:
+    - mopidy
+
+- name: Install site descriptor
+  template:
+    src: nginx_mopidy.conf.j2
+    dest: /etc/nginx/sites-available/mopidy.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - nginx
+
+- name: Enable site
+  file:
+    src: /etc/nginx/sites-available/mopidy.conf
+    dest: /etc/nginx/sites-enabled/mopidy.conf
+    state: link
+  notify:
+    - nginx
+
+- name: Install Mopidy firewall rules
+  template:
+    src: mopidy.rules.j2
+    dest: /etc/iptables.d/mopidy.rules
+    owner: root
+    group: root
+    mode: 0640
+  notify:
+    - iptables
+
+- name: Install Mopidy firewall rules
+  template:
+    src: mopidy.6rules.j2
+    dest: /etc/ip6tables.d/mopidy.6rules
+    owner: root
+    group: root
+    mode: 0640
+  notify:
+    - iptables
+
+- name: Enable Mopidy
+  runit:
+    name: mopidy
+    state: started
+    enabled: true

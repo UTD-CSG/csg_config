@@ -1,0 +1,6 @@
+---
+mopidy_web_port: 6680
+mopidy_web_root: iris
+mopidy_audio_mixer: software
+mopidy_media_directory: /srv/mopidy
+mopidy_spotify_enabled: true
