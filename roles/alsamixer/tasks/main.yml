@@ -1,0 +1,5 @@
+---
+- name: Install ALSA mixer
+  xbps:
+    pkg: alsa-utils
+    state: present

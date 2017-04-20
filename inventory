@@ -15,6 +15,9 @@ csg09.csg
 [utility]
 drown.csg
 
+[media]
+poodle.csg
+
 [server]
 drown.csg
 poodle.csg

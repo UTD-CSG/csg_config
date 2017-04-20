@@ -1,0 +1,12 @@
+---
+- hosts: media
+  become: yes
+  become_method: sudo
+  roles:
+    - xbps-repoconf
+    - ntp
+    - sshd
+    - key-access
+    - pip
+    - alsamixer
+    - mopidy
