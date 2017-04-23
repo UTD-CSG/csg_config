@@ -114,7 +114,7 @@ sg_networks:
 sg_interfaces:
   - name: em0
     desc: External UTD Network
-    address: 10.176.169.16/24
+    address: 10.176.169.10/24
   - name: em1
     desc: Internal CSG Network
     address: 192.168.10.1/24

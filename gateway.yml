@@ -10,6 +10,7 @@
   become_method: doas
   roles:
     - sg-base
+    - sg-dhcp
     - sg-dns
     - sg-ntp
     - sg-wol
