@@ -1,5 +1,5 @@
 ---
-sg_pkg_path: https://mirror.esc7.net/%m/
+sg_pkg_path: https://mirror.esc7.net/pub/OpenBSD/
 sg_pkg_server: mirror.esc7.net
 
 sg_globalconf:
