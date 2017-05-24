@@ -10,6 +10,9 @@ sg_globalconf:
     - 10.182.70.24
     - 10.180.15.160
     - 10.180.14.69
+  boothosts:
+    - name: mirror.esc7.net
+      ip: 72.53.191.10
   ssh:
     permit_password: false
     listen_egress: true
