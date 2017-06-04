@@ -8,3 +8,9 @@ ntp_servers:
 LWG_theme_name: csg
 
 firefox_homepage: https://csg.utdallas.edu/
+
+netdata_nginx: False
+netdata_web_mode: False
+netdata_stream_mode: slave
+netdata_stream_destination: poodle.csg
+netdata_api_key: "{{ lookup('file', 'secret/netdata_api_key') }}"

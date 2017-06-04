@@ -1,0 +1,14 @@
+---
+nginx_servers:
+  - name: netdata
+    server_name: netdata.csg
+    root_directory: False
+    use_ssl: False
+
+netdata_nginx: True
+netdata_nginx_server: netdata
+netdata_uri: /
+netdata_basic_auth: False
+netdata_stream_mode: master
+netdata_bind_to: 0.0.0.0
+netdata_api_key: "{{ lookup('file', 'secret/netdata_api_key') }}"

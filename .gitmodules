@@ -58,3 +58,6 @@
 [submodule "roles/acmetool"]
 	path = roles/acmetool
 	url = https://github.com/void-ansible-roles/acmetool.git
+[submodule "roles/netdata"]
+	path = roles/netdata
+	url = https://github.com/void-ansible-roles/netdata.git

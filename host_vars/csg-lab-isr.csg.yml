@@ -85,7 +85,12 @@ sg_networks:
         addr: 192.168.10.5
         dns:
           CNAME:
-            - jukebox
+            - netdata
+        pf:
+          out:
+            - proto: tcp
+              dest: any
+              port: "{80 443}"
       - name: drown
         mac: 00:21:9b:71:ea:61
         addr: 192.168.10.6

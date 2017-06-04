@@ -1,5 +1,5 @@
 ---
-- hosts: media
+- hosts: monitoring
   become: yes
   become_method: sudo
   roles:
@@ -8,5 +8,5 @@
     - sshd
     - key-access
     - pip
-    - alsamixer
-    - mopidy
+    - nginx
+    - netdata
