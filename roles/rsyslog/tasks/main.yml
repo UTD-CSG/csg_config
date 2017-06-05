@@ -1,0 +1,39 @@
+---
+- name: Install rsyslog
+  xbps:
+    pkg: rsyslog
+    state: present
+
+- name: Install rsyslog.conf
+  template:
+    src: rsyslog.conf.j2
+    dest: /etc/rsyslog.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: rsyslogd
+
+- name: Make rsyslog spool directory
+  file:
+    dest: /var/spool/syslog
+    owner: root
+    group: root
+    mode: 0750
+    state: directory
+  when: rsyslog_remote is defined
+
+- name: Install firewall rules
+  template:
+    src: rsyslog.rules.j2
+    dest: /etc/iptables.d/rsyslog.rules
+    owner: root
+    group: root
+    mode: 0640
+  notify:
+    - iptables
+
+- name: Enable rsyslogd
+  runit:
+    name: rsyslogd
+    enabled: yes
+    state: started

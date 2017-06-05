@@ -1,0 +1,11 @@
+*filter
+{% if rsyslog_remote is defined %}
+-A OUTPUT -p tcp --dport 514 -j ACCEPT
+{% endif %}
+
+{% if rsyslog_server %}
+-A INPUT -p tcp --dport 514 -j ACCEPT
+{% endif %}
+
+COMMIT
+

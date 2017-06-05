@@ -14,3 +14,5 @@ netdata_web_mode: False
 netdata_stream_mode: slave
 netdata_stream_destination: poodle.csg
 netdata_api_key: "{{ lookup('file', 'secret/netdata_api_key') }}"
+
+rsyslog_remote: poodle.csg
