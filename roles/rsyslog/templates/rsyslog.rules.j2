@@ -1,10 +1,10 @@
 *filter
-{% if rsyslog_remote is defined %}
--A OUTPUT -p tcp --dport 514 -j ACCEPT
+{% if rsyslog_remote != "" %}
+-A OUTPUT -p tcp --dport {{ rsyslog_remote_port }} -j ACCEPT
 {% endif %}
 
 {% if rsyslog_server %}
--A INPUT -p tcp --dport 514 -j ACCEPT
+-A INPUT -p tcp --dport {{ rsyslog_server_port }} -j ACCEPT
 {% endif %}
 
 COMMIT

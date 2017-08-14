@@ -2,6 +2,7 @@
 - hosts: website
   become: yes
   roles:
+    - rsyslog
     - xbps-repoconf
     - sshd
     - ntp

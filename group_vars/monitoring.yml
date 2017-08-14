@@ -3,7 +3,6 @@ nginx_servers:
   - name: netdata
     server_name: netdata.csg
     root_directory: False
-    use_ssl: False
 
 netdata_nginx: True
 netdata_nginx_server: netdata

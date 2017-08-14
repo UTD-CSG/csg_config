@@ -9,11 +9,14 @@ $ModLoad immark   # provides --MARK-- message capability
 $ModLoad imuxsock # provides support for local system logging (e.g. via logger command)
 $ModLoad imklog   # kernel logging (formerly provided by rklogd)
 
+# Set --MARK-- frequency
+$MarkMessagePeriod {{ rsyslog_mark_period }}
+
 # Include config file snippets.
 $IncludeConfig /etc/rsyslog.d/
 
 # Set default permissions.
-$FileCreateMode 0640
+$FileCreateMode {{ rsyslog_default_permissions }}
 
 # Log all kernel messages to the console.
 # Logging much else clutters up the screen.
@@ -42,7 +45,7 @@ cron.*                                                  -/var/log/cron
 # Save boot messages also to boot.log
 #local7.*                                                /var/log/boot.log
 
-{% if rsyslog_remote is defined %}
+{% if rsyslog_remote != "" %}
 # Remote Logging (we use TCP for reliable delivery)
 # An on-disk queue is created for this action. If the remote host is
 # down, messages are spooled to disk and sent when it is up again.
@@ -53,7 +56,7 @@ $ActionQueueSaveOnShutdown on # save messages to disk on shutdown
 $ActionQueueType LinkedList   # run asynchronously
 $ActionResumeRetryCount -1    # infinite retries if host is down
 # remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional
-*.* @@{{ rsyslog_remote }}:514
+*.* @@{{ rsyslog_remote }}:{{ rsyslog_remote_port }}
 {% endif %}
 
 {% if rsyslog_server %}
@@ -61,7 +64,7 @@ $ActionResumeRetryCount -1    # infinite retries if host is down
 # TCP Syslog Server:
 # provides TCP syslog reception and GSS-API (if compiled to support it)
 $ModLoad imtcp.so  # load module
-$InputTCPServerRun 514 # start up TCP listener at port 514
+$InputTCPServerRun {{ rsyslog_server_port }} # start up TCP listener at port 514
 {% endif%}
 
 # UDP Syslog Server:
